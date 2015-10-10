@@ -13,6 +13,7 @@ dev:
     cache:                  false
     no_script_name:         false
     etag:                   false
+    error_reporting:  <?php echo ((E_ALL | E_STRICT) ^ E_DEPRECATED)."\n" ?>
 
 test:
   .settings:
