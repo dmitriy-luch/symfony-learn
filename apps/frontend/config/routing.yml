@@ -17,6 +17,15 @@ job_show_user:
     id: \d+
     sf_method: [GET]
   
+category:
+  url:     /category/:slug
+  class:   sfDoctrineRoute
+  options:
+    model: JobeetCategory
+    type:  object
+    method_for_query: retrieveActiveCategory
+  param:   { module: category, action: show }
+  
 # default rules
 homepage:
   url:   /

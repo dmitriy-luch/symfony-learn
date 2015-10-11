@@ -14,6 +14,11 @@ class jobActions extends sfActions
   {
     $this->categories = Doctrine_Core::getTable('JobeetCategory')->getWithJobs();
   }
+  
+  public function executeCategory(sfWebRequest $request)
+  {
+    $this->jobs = $this->getRoute()->getObject()->getActiveJobs();
+  }
 
   public function executeShow(sfWebRequest $request)
   {

@@ -25,4 +25,12 @@ class JobeetCategoryTable extends Doctrine_Table
  
     return $q->execute();
   }
+  
+  public function retrieveActiveCategory(Doctrine_Query $q)
+  {
+    $q->leftJoin('a.JobeetJobs j')
+      ->andWhere('j.expires_at > ?', date('Y-m-d H:i:s', time()));
+ 
+    return $q->execute();
+  }
 }
