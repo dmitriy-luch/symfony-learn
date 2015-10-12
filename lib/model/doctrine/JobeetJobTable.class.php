@@ -7,6 +7,16 @@
  */
 class JobeetJobTable extends Doctrine_Table
 {
+  static public $types = array(
+    'full-time' => 'Full time',
+    'part-time' => 'Part time',
+    'freelance' => 'Freelance',
+  );
+ 
+  public function getTypes()
+  {
+    return self::$types;
+  }
   /**
    * Returns an instance of this class.
    *
@@ -17,7 +27,7 @@ class JobeetJobTable extends Doctrine_Table
       return Doctrine_Core::getTable('JobeetJob');
   }
     
-public function retrieveActiveJob(Doctrine_Query $q)
+  public function retrieveActiveJob(Doctrine_Query $q)
   {
     return $this->addActiveJobsQuery($q)->fetchOne();
   }
@@ -44,6 +54,8 @@ public function retrieveActiveJob(Doctrine_Query $q)
  
     $q->andWhere($alias . '.expires_at > ?', date('Y-m-d H:i:s', time()))
       ->addOrderBy($alias . '.created_at DESC');
+    
+    $q->andWhere($alias . '.is_activated = ?', 1);
  
     return $q;
   }
