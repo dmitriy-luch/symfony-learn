@@ -32,7 +32,15 @@ category:
   param:   { module: category, action: show, sf_format: html }
   requirements:
     sf_format: (?:html|atom)
-  
+
+api_jobs:
+  url:     /api/:token/jobs.:sf_format
+  class:   sfDoctrineRoute
+  param:   { module: api, action: list }
+  options: { model: JobeetJob, type: list, method: getForToken }
+  requirements:
+    sf_format: (?:xml|json|yaml)
+    
 # default rules
 homepage:
   url:   /
