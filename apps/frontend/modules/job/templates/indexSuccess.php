@@ -6,9 +6,7 @@
     <div class="category_<?php echo Jobeet::slugify($category->getName()) ?>">
       <div class="category">
         <div class="feed">
-          <div class="feed">
-            <a href="<?php echo url_for('category', array('sf_subject' => $category, 'sf_format' => 'atom')) ?>">Feed</a>
-          </div>
+          <a href="<?php echo url_for('category', array('sf_subject' => $category, 'sf_format' => 'atom')) ?>">Feed</a>
         </div>
         <h1><?= link_to($category->getName(), 'category', $category); ?></h1>
       </div>
